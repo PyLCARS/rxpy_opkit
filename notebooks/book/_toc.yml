@@ -3,31 +3,34 @@
 
 format: jb-book
 root: intro
-parts:
-  - caption: Getting Started
-    chapters:
-    - file: getting_started/installation
-    - file: getting_started/quickstart
+chapters:
+  # Quickstart will be added once the notebook is created
+  # - file: ../quickstart
   
-  - caption: Operators
+  # Flat Operators section
+  - section: Flat Operators
     chapters:
-    - file: operators/overview
-    - file: operators/basic_operators
-    - file: operators/logging_operators
-    - file: operators/custom_operators
+      # Will be added once the notebooks are created
+      # - file: ../flat_operators/why_flat_operators
+      # - file: ../flat_operators/creating_operators
   
-  - caption: Tools
+  # Logging section
+  - section: Logging
     chapters:
-    - file: tools/overview
-    - file: tools/implementation_tools
+      # Will be added once the notebooks are created
+      # - file: ../logging/basic_logging
+      # - file: ../logging/advanced_logging
   
-  - caption: Examples
+  # Missing Operators section
+  - section: Missing Operators
     chapters:
-    - file: examples/basic_examples
-    - file: examples/advanced_examples
+      # Will be added once the notebook is created
+      # - file: ../missing_operators/struct_operators
   
-  - caption: API Reference
+  # Testing section
+  - section: Testing
     chapters:
-    - file: api/operators
-    - file: api/tools
-    - file: api/logging
+      # Will be added once the notebooks are created
+      # - file: ../testing/flat_operator_tests
+      # - file: ../testing/logging_tests
+      # - file: ../testing/test_writing_guide

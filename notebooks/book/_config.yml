@@ -23,10 +23,6 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-# Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
-
 # Launch button settings
 launch_buttons:
   notebook_interface: jupyterlab
@@ -57,3 +53,4 @@ sphinx:
     - sphinx_togglebutton
     - sphinx_copybutton
     - sphinx_thebe
+    - sphinxcontrib.mermaid
