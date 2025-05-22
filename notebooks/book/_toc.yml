@@ -3,31 +3,31 @@
 
 format: jb-book
 root: intro
-chapters:
-  # Quickstart will be added once the notebook is created
-  # - file: ../quickstart
-  
+parts:
   # Flat Operators section
-  - section: Flat Operators
+  - caption: Flat Operators
     chapters:
+      - file: flat_operators_placeholder
       # Will be added once the notebooks are created
       # - file: ../flat_operators/why_flat_operators
       # - file: ../flat_operators/creating_operators
   
   # Logging section
-  - section: Logging
+  - caption: Logging
     chapters:
-      - file: ../logging/logging_operators_usage
+      - file: logging_placeholder
   
   # Missing Operators section
-  - section: Missing Operators
+  - caption: Missing Operators
     chapters:
+      - file: missing_operators_placeholder
       # Will be added once the notebook is created
       # - file: ../missing_operators/struct_operators
   
   # Testing section
-  - section: Testing
+  - caption: Testing
     chapters:
+      - file: testing_placeholder
       # Will be added once the notebooks are created
       # - file: ../testing/flat_operator_tests
       # - file: ../testing/logging_tests
