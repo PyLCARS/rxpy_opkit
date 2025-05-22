@@ -17,9 +17,7 @@ chapters:
   # Logging section
   - section: Logging
     chapters:
-      # Will be added once the notebooks are created
-      # - file: ../logging/basic_logging
-      # - file: ../logging/advanced_logging
+      - file: ../logging/logging_operators_usage
   
   # Missing Operators section
   - section: Missing Operators
