@@ -20,15 +20,73 @@
 # This notebook demonstrates all the logging operators available in RxPy OpKit. These operators help you debug, monitor, and understand the behavior of your reactive streams.
 
 # %% [markdown]
-# # Imports
+# # Setup and Imports
 
 # %%
+# Add project root and src to Python path
+import sys
+import os
+from pathlib import Path
+
+# Directly use the absolute path to the project root
+# This works both in notebooks and in scripts
+project_root = Path('/media/storage/GShared/Todays_Projects/rxpy_opkit')
+src_dir = project_root / 'src'
+
+# Print diagnostic information
+print(f"Project root: {project_root}")
+print(f"Source directory: {src_dir}")
+print(f"Directory exists: {project_root.exists()}")
+print(f"Source exists: {src_dir.exists()}")
+
+# In case the hard-coded path doesn't work, try to find the project root
+if not src_dir.exists():
+    print("Hard-coded path didn't work, trying to find project root...")
+    try:
+        # When running as a script
+        script_path = Path(__file__).resolve()
+        project_root = script_path.parent.parent.parent
+        src_dir = project_root / 'src'
+        print(f"Script-based project root: {project_root}")
+    except NameError:
+        # When in Jupyter, try working up from current directory
+        cwd = Path.cwd()
+        print(f"Current working directory: {cwd}")
+        
+        # If we're in notebooks/logging, go up two directories
+        if cwd.name == 'logging' and cwd.parent.name == 'notebooks':
+            project_root = cwd.parent.parent
+        # If we're in notebooks, go up one directory
+        elif cwd.name == 'notebooks':
+            project_root = cwd.parent
+        # Otherwise assume we're at the project root
+        else:
+            project_root = cwd
+            
+        src_dir = project_root / 'src'
+        print(f"Notebook-based project root: {project_root}")
+
+
+# Add both project root and src to Python path if not already there
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+if str(src_dir) not in sys.path:
+    sys.path.insert(0, str(src_dir))
+
+# Verify the package can be imported
+try:
+    import rxpy_opkit
+    print(f"Successfully imported rxpy_opkit from: {rxpy_opkit.__file__}")
+except ImportError as e:
+    print(f"Failed to import rxpy_opkit: {e}")
+    print(f"Python path: {sys.path}")
+    raise
+
 import reactivex as rx
 from reactivex import operators as ops
 import time
 import random
 from loguru import logger
-import sys
 
 # Import logging operators from rxpy_opkit
 from rxpy_opkit.logging_ops import (
