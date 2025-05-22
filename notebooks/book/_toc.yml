@@ -1,0 +1,33 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Getting Started
+    chapters:
+    - file: getting_started/installation
+    - file: getting_started/quickstart
+  
+  - caption: Operators
+    chapters:
+    - file: operators/overview
+    - file: operators/basic_operators
+    - file: operators/logging_operators
+    - file: operators/custom_operators
+  
+  - caption: Tools
+    chapters:
+    - file: tools/overview
+    - file: tools/implementation_tools
+  
+  - caption: Examples
+    chapters:
+    - file: examples/basic_examples
+    - file: examples/advanced_examples
+  
+  - caption: API Reference
+    chapters:
+    - file: api/operators
+    - file: api/tools
+    - file: api/logging
