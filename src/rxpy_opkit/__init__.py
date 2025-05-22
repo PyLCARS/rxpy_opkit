@@ -10,7 +10,6 @@ A collection of custom operators for RxPy including:
 from .basis import (
     BaseOperator,
     StatefulOperator,
-    CompositeOperator,
     SimpleOperator,
     FilteringOperator,
     create_operator,
@@ -37,7 +36,6 @@ __all__ = [
     # Basis classes
     "BaseOperator",
     "StatefulOperator",
-    "CompositeOperator",
     "SimpleOperator",
     "FilteringOperator",
     "create_operator",
