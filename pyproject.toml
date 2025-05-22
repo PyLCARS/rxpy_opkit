@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "rxpy_opkit"
 version = "0.1.0"
-description = "Reactive programming toolkit with operational utilities"
+description = "A collection of custom operators and tools for RxPy, including logging, debugging, and missing operators from other Rx implementations"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "GProtoZeroW", email = "11997114+GProtoZeroW@users.noreply.github.com"}
 ]
 dependencies = [
     "loguru>=0.7.0",
@@ -19,5 +19,17 @@ dependencies = [
     "jupyterlab>=4.0.0",
     "notebook>=7.0.0",
     "jupyter-book>=0.15.0",
+    "myst-nb>=1.2.0",
+    "sphinx-book-theme>=1.1.4",
+    "sphinx-copybutton>=0.5.0",
+    "sphinxcontrib-mermaid>=1.0.0",
+    "jupyterlab-myst>=2.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipytest",
+    "jupytext>=1.14.0",
+    "nbconvert>=7.0.0",
 ]
 
