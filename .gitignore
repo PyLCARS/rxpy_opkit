@@ -162,7 +162,6 @@ cython_debug/
 
 # Jupyter Notebook specific
 .ipynb_checkpoints/
-*.ipynb
 .jupyter/
 jupyter_notebook_config.py
 notebook_checkpoints/
