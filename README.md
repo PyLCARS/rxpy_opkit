@@ -1,13 +1,18 @@
 # RxPy OpKit
 
-A collection of custom operators and tools for RxPy, including logging, debugging, and missing operators from other Rx implementations.
+[![Documentation](https://github.com/PyLCARS/rxpy_opkit/actions/workflows/deploy-book.yml/badge.svg)](https://pylcars.github.io/rxpy_opkit/intro.html)
+[![Tests](https://github.com/PyLCARS/rxpy_opkit/actions/workflows/run-tests.yml/badge.svg)](https://github.com/PyLCARS/rxpy_opkit/actions/workflows/run-tests.yml)
+
+A collection of custom operators and tools for RxPy using flat class structure, including logging, debugging, and missing operators from other Rx implementations.
+
+📚 **[View the Documentation](https://pylcars.github.io/rxpy_opkit/intro.html)**
 
 ## Overview
 
 RxPy OpKit provides a foundation for building reactive applications with improved operator ergonomics. The library focuses on:
 
-1. **Foundation Classes**: Abstract base classes for creating custom RxPy operators using a flat class structure
-2. **Logging Operators**: Rich, structured logging using loguru for debugging reactive streams
+1. **Basis Classes**: Abstract base classes for creating custom RxPy operators using a flat class structure
+2. **Logging Operators**: Rich, structured logging using loguru for debugging reactive streams using our flat class structure
 3. **Extended Operators**: Implementations of operators missing from RxPy but present in other Rx implementations
 
 ## Installation
@@ -130,6 +135,7 @@ source.pipe(
 ## Development
 
 ### Running Tests
+**TODO**
 
 ```bash
 pytest
@@ -145,6 +151,12 @@ pip install -e ".[dev]"
 
 # Build the docs
 jupyter-book build notebooks
+
+# View the docs locally
+open notebooks/_build/html/index.html
+
+# Online documentation
+# The documentation is available at: https://pylcars.github.io/rxpy_opkit/intro.html
 ```
 
 ## License
