@@ -55,3 +55,39 @@ dl.citation dt {
     font-weight: bold;
     color: #357EDD;
 }
+
+/* Fix choppy notebook cell output display */
+.cell_output {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Ensure output text doesn't get cut off */
+.cell_output pre {
+    word-break: normal;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 0.5em;
+}
+
+/* Improve display of loguru-style log output */
+.cell_output .log-output {
+    font-family: monospace;
+    line-height: 1.5;
+    padding: 0.5em;
+}
+
+/* Make sure scrollbars appear only when needed */
+.jp-OutputArea-output {
+    max-height: none !important;
+    overflow-y: visible !important;
+}
+
+/* Better display for long text lines in outputs */
+.highlight pre {
+    white-space: pre-wrap;
+}
