@@ -1,14 +1,22 @@
 # Book settings
-title: ReactiveX for Python Learning Book
+title: Flat RxPy Operators (`rxpy_opkit`) Manual 
 author: GProtoZeroW
 logo: ""
-copyright: "2024"
+copyright: "2025"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
   allow_errors: false
+  # Configure output handling
+  stderr_output: 'show'  # Show stderr output
+  stdout_output: 'show'  # Show stdout output
+  
+# MyST-NB specific settings for output handling
+nb_execution_mode: "force"
+nb_merge_streams: true  # Merge consecutive stream outputs
+nb_output_stderr: "show"  # Show stderr in the output
 
 # Define the paths to build
 paths:
@@ -17,7 +25,6 @@ paths:
   # Path to external files that should be built as part of the book
   # but aren't in the TOC.
   external: "../"
-
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -65,7 +72,7 @@ parse:
     - substitution
     - tasklist
 
-# Add MyST-NB
+# Add MyST-NB and configure sphinx
 sphinx:
   extra_extensions:
     - sphinx.ext.autodoc
@@ -76,3 +83,16 @@ sphinx:
     - sphinx_copybutton
     - sphinx_thebe
     - sphinxcontrib.mermaid
+  config:
+    # Add configuration for better output handling
+    nb_merge_streams: true
+    nb_render_text_lexer: "myst-ansi"
+    nb_execution_show_tb: false
+    nb_output_stderr: "show"  # Show stderr in output
+    # Ensure ANSI colors are preserved
+    nb_render_markdown_format: "myst"
+    # Add custom CSS files
+    html_css_files:
+      - css/custom.css
+    # Suppress some warnings if needed
+    suppress_warnings: ["myst.header"]

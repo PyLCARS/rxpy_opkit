@@ -1,15 +1,121 @@
 /* Custom CSS for the ReactiveX for Python Learning Book */
 
-/* Enhance code blocks with better spacing and border */
-div.highlight {
-    margin: 1rem 0;
+/* ============================================ */
+/* CRITICAL FIX: MERGE ALL CELL OUTPUTS */
+/* ============================================ */
+
+/* Remove all individual output container styling */
+.cell .cell_output .output,
+.cell .cell_output .output_area,
+.cell .cell_output .output_text,
+.cell .cell_output .output_stream,
+.cell .cell_output .output_stdout,
+.cell .cell_output .output_subarea,
+.cell .cell_output .output_html,
+.cell .cell_output div[data-mime-type] {
+    /* Remove ALL styling that creates boxes */
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    /* Ensure they flow together */
+    display: block !important;
+}
+
+/* Style ONLY the main output container */
+.cell > .cell_output {
+    background-color: #f8f8f8;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    padding: 0.75em;
+    margin: 0.5em 0;
+    font-family: 'Consolas', 'Monaco', 'DejaVu Sans Mono', monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+/* Ensure pre elements don't add spacing */
+.cell_output pre {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Remove any pseudo-elements that might add spacing */
+.cell_output *::before,
+.cell_output *::after {
+    display: none !important;
+}
+
+/* Force consecutive outputs to merge visually */
+.cell_output > :not(:first-child) {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+}
+
+/* Specific fix for MyST-NB output structure */
+.cell_output .output + .output {
+    margin-top: -1px !important; /* Slight negative margin to ensure no gaps */
+}
+
+/* Handle ANSI color codes from loguru */
+.cell_output .ansi-green-fg { color: #10a010 !important; }
+.cell_output .ansi-red-fg { color: #c82829 !important; }
+.cell_output .ansi-yellow-fg { color: #eab700 !important; }
+.cell_output .ansi-blue-fg { color: #4271ae !important; }
+.cell_output .ansi-magenta-fg { color: #c678dd !important; }
+.cell_output .ansi-cyan-fg { color: #56b6c2 !important; }
+.cell_output .ansi-white-fg { color: #efefef !important; }
+.cell_output .ansi-black-fg { color: #282c34 !important; }
+.cell_output .ansi-bold { font-weight: bold !important; }
+
+/* Fix for inline ANSI spans */
+.cell_output span[class*="ansi-"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    display: inline !important;
+}
+
+/* ============================================ */
+/* ALTERNATIVE: HIDE OUTPUT CONTAINERS */
+/* ============================================ */
+
+/* If outputs still show as separate, hide wrapper divs */
+.cell_output > div > div {
+    display: contents !important; /* Makes container act as if it doesn't exist */
+}
+
+/* Keep only the actual content visible */
+.cell_output pre,
+.cell_output span {
+    display: inline !important;
+}
+
+/* ============================================ */
+/* ORIGINAL BOOK STYLING */
+/* ============================================ */
+
+/* Enhance code input blocks */
+.cell .cell_input div.highlight {
+    margin: 0;
     padding: 0.5rem;
     border-radius: 4px;
-    border-left: 3px solid #B10DC9;  /* Purple border for code blocks */
+    border-left: 3px solid #B10DC9;
 }
 
 /* Make headings about ReactiveX more visual */
-h2[id*="reactive"], h2[id*="observable"], h2[id*="rxpy"], h2[id*="operators"] {
+h2[id*="reactive"], 
+h2[id*="observable"], 
+h2[id*="rxpy"], 
+h2[id*="operators"] {
     color: #B10DC9;
     border-bottom: 2px solid #B10DC9;
     padding-bottom: 0.3rem;
@@ -56,38 +162,49 @@ dl.citation dt {
     color: #357EDD;
 }
 
-/* Fix choppy notebook cell output display */
-.cell_output {
-    max-width: 100%;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+/* ============================================ */
+/* FINAL OVERRIDE: JUPYTER BOOK SPECIFIC */
+/* ============================================ */
+
+/* Target Jupyter Book's specific output structure */
+.bd-content .cell .cell_output > div {
+    all: unset !important; /* Nuclear option - reset ALL styles */
+    display: block !important;
 }
 
-/* Ensure output text doesn't get cut off */
-.cell_output pre {
-    word-break: normal;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    overflow-x: auto;
-    max-width: 100%;
-    padding: 0.5em;
+/* Reapply only the container styling */
+.bd-content .cell > .cell_output {
+    all: unset !important;
+    display: block !important;
+    background-color: #f8f8f8 !important;
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 4px !important;
+    padding: 0.75em !important;
+    margin: 0.5em 0 !important;
+    font-family: monospace !important;
+    overflow-x: auto !important;
 }
 
-/* Improve display of loguru-style log output */
-.cell_output .log-output {
-    font-family: monospace;
-    line-height: 1.5;
-    padding: 0.5em;
+/* Ensure text content displays properly */
+.bd-content .cell .cell_output pre,
+.bd-content .cell .cell_output code,
+.bd-content .cell .cell_output span {
+    all: unset !important;
+    font-family: inherit !important;
+    white-space: pre !important;
+    display: inline !important;
 }
 
-/* Make sure scrollbars appear only when needed */
-.jp-OutputArea-output {
-    max-height: none !important;
-    overflow-y: visible !important;
+/* Preserve only color styles for ANSI */
+.bd-content .cell .cell_output span[class*="ansi-"] {
+    all: unset !important;
+    display: inline !important;
 }
 
-/* Better display for long text lines in outputs */
-.highlight pre {
-    white-space: pre-wrap;
-}
+.bd-content .cell .cell_output .ansi-green-fg { color: #10a010 !important; }
+.bd-content .cell .cell_output .ansi-red-fg { color: #c82829 !important; }
+.bd-content .cell .cell_output .ansi-yellow-fg { color: #eab700 !important; }
+.bd-content .cell .cell_output .ansi-blue-fg { color: #4271ae !important; }
+.bd-content .cell .cell_output .ansi-magenta-fg { color: #c678dd !important; }
+.bd-content .cell .cell_output .ansi-cyan-fg { color: #56b6c2 !important; }
+.bd-content .cell .cell_output .ansi-bold { font-weight: bold !important; }
