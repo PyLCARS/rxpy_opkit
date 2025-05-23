@@ -144,7 +144,7 @@ The project documentation is built with Jupyter Book:
 pip install -e ".[dev]"
 
 # Build the docs
-jupyter-book build notebooks/book
+jupyter-book build notebooks
 ```
 
 ## License
